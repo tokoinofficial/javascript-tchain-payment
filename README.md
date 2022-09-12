@@ -24,15 +24,17 @@ Payment.init(merchant_id);
 #### Deposit
 
 ```
-Payment.deposit(amount, order_id, callback)
+Payment.deposit(amount, order_id, callbackFunc)
 ```
 
-- `callback` is a function that ưill be called after deposit
-
+- `callbackFunc` is a function that will be called after deposit
+- callbackFunc(res) {
+    const tnxHash = res.hash;
+  }
 #### Example
 
 ```
-Payment.deposit(10, OrderID123, (res) => {
+Payment.deposit(10, "OrderID123", (res) => {
     this.transaction_hash = res.hash;
 })
 ```
