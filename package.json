@@ -1,0 +1,35 @@
+{
+    "main": "index.js",
+    "name": "t-chain-payment",
+    "license": "MIT",
+    "version": "1.0.2",
+    "author": {
+        "name": "Toko Chain",
+        "email": "son.pham@tokoin.io"
+    },
+    "engines": {
+        "node": ">=14.16"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/tokoinofficial/javascript-tchain-payment.git"
+    },
+    "keywords": [
+        "Javascript",
+        "Payment",
+        "Tokoin",
+        "TokoChainPayment"
+    ],
+    "scripts": {
+        "dev": "node_modules/webpack/bin/webpack.js --mode production --watch --progress",
+        "build": "node_modules/webpack/bin/webpack.js --mode production --progress"
+    },
+    "dependencies": {
+        "ethers": "^5.6.9",
+        "qrcode": "^1.5.1",
+        "uglifyjs-webpack-plugin": "^2.2.0",
+        "webpack": "^5.74.0",
+        "webpack-cli": "^4.10.0"
+    },
+    "devDependencies": {}
+}
