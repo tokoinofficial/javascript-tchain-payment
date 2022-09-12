@@ -24,21 +24,21 @@ Payment.init(merchant_id);
 #### Deposit
 
 ```
-Payment.deposit(tokenAsset, amount, isUseToko)
+Payment.deposit(amount, order_id, callback)
 ```
 
-- `tokenAsset` is `busd` or `usdt`
-
-- if `isUseToko` is true. You must have a `$TOKO` token and it will use to pay a fee for the transaction and the amount of receive will be large than.
+- `callback` is a function that ưill be called after deposit
 
 #### Example
 
 ```
-Payment.deposit("busd", 1, true)
+Payment.deposit(10, OrderID123, (res) => {
+    this.transaction_hash = res.hash;
+})
 ```
 
 
 ## Demo
 
-[Demo library](https://github.com/tokoinofficial/tchain-payment-example)
+[Demo library](https://github.com/tokoinofficial/t-chain-payment-js-example.git)
 
