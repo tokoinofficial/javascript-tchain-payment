@@ -2,7 +2,7 @@
     "main": "index.js",
     "name": "t-chain-payment",
     "license": "MIT",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "author": {
         "name": "Toko Chain",
         "email": "son.pham@tokoin.io"
