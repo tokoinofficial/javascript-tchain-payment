@@ -2,7 +2,7 @@
     "main": "index.js",
     "name": "t-chain-payment",
     "license": "MIT",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "author": {
         "name": "Toko Chain",
         "email": "son.pham@tokoin.io"
@@ -12,13 +12,13 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/tokoinofficial/javascript-tchain-payment.git"
+        "url": "https://github.com/tokoinofficial/t-chain-payment-js-sdk.git"
     },
     "keywords": [
         "Javascript",
         "Payment",
         "Tokoin",
-        "TokoChainPayment"
+        "T-Chain"
     ],
     "scripts": {
         "dev": "node_modules/webpack/bin/webpack.js --mode production --watch --progress",
