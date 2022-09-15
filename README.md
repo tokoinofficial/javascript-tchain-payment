@@ -1,4 +1,4 @@
-# TChain Payment
+# t-chain-payment
 
 ## Installation
 
