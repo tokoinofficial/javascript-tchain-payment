@@ -18,20 +18,23 @@ $ yarn add t-chain-payment
 ```
 import Payment from "t-chain-payment";
 
-Payment.init(merchant_id);
+Payment.init({ api_key: "3e093592-3e0e-4a52-9601-ead49f794586" });
 ```
 
-`merchant_id` will be provided when creating a project or use default merchant id  
+`api_key` will be generate in the cms of t-chain  
 
 
 ## Deposit
 
 ```
-Payment.deposit(amount, order_id, callbackFunc)
+const params = {
+	amount: 1000,
+	orderId: "order_id,
+	chainId: "97",
+	currency: "IDR",
+};
+Payment.deposit(params, callbackFunc);
 ```
-
-`order_id`: unique id of each order. It is called offchain in blockchain terms. 
-
 #### Handle callback result  
 ```
 callbackFunc(res) {
@@ -41,20 +44,31 @@ callbackFunc(res) {
 
 #### Example for deposit
 ```
-Payment.deposit(10, "OrderID123", (res) => {
+const params = {
+	amount: 1000,
+	orderId: "Order123,
+	chainId: "97",
+	currency: "IDR",
+};
+Payment.deposit(params, (res) => {
     this.transaction_hash = res.hash;
-})
+});
 ```
 
 ## Generate QR
 ```
-Payment.generateQrCode(amount, orderID).then((res) => {
-  // handle QR Url
-  qrCode = res;
-});
-```
+const params = {
+    amount: 1000,
+    orderId: "order id",
+    chainId: "97",
+    currency: "IDR",
+};
 
-`order_id`: unique id of each order. It is called offchain in blockchain terms. 
+Payment.generateQrCode(params).then((res) => {
+    this.qrCode = res;
+});
+
+```
 
 **Next step**: 
 - User use T-Wallet app to scan the QR Code.
@@ -68,7 +82,7 @@ Payment.generateQrCode(amount, orderID).then((res) => {
 	"tnx_hash": string,
 	"deposit_address": string,
 	"deposit_id": string,
-	"merchant_id": string,
+	"offchain": string,
 	"order_id": string,
 	"amount": string,
 	"type": int, 
@@ -94,5 +108,4 @@ const (
 
 ## Demo
 
-[Demo payment with t-chain](https://github.com/tokoinofficial/t-chain-payment-js-example.git)
-
+[Demo payment with t-chain](https://tchain-demo.tokoin.io/)
