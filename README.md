@@ -18,10 +18,10 @@ $ yarn add t-chain-payment
 ```
 import Payment from "t-chain-payment";
 
-Payment.init({ api_key: "3e093592-3e0e-4a52-9601-ead49f794586" });
+Payment.init({ api_key: api-key });
 ```
 
-`api_key` will be generate in the cms of t-chain  
+`api_key` is the public key. It will be generated in the cms of t-chain.
 
 
 ## Deposit
@@ -29,11 +29,13 @@ Payment.init({ api_key: "3e093592-3e0e-4a52-9601-ead49f794586" });
 ```
 const params = {
 	amount: 1000,
-	orderId: "order_id,
-	chainId: "97",
+	notes: "order_id",
+	chain_id: "97",
 	currency: "IDR",
 };
 Payment.deposit(params, callbackFunc);
+Current : USD/IDR/VND (default: USD)
+chain_id: 97(testnet)/56(mainnet)
 ```
 #### Handle callback result  
 ```
@@ -46,8 +48,8 @@ callbackFunc(res) {
 ```
 const params = {
 	amount: 1000,
-	orderId: "Order123,
-	chainId: "97",
+	notes: "order-123-456,
+	chain_id: "97",
 	currency: "IDR",
 };
 Payment.deposit(params, (res) => {
@@ -59,7 +61,7 @@ Payment.deposit(params, (res) => {
 ```
 const params = {
     amount: 1000,
-    orderId: "order id",
+    notes: "order-123-456",
     chainId: "97",
     currency: "IDR",
 };
@@ -83,28 +85,16 @@ Payment.generateQrCode(params).then((res) => {
 	"deposit_address": string,
 	"deposit_id": string,
 	"offchain": string,
-	"order_id": string,
+	"notes": string,
 	"amount": string,
-	"type": int, 
-	"status": int,
-	"deposited_at": int
+	"type": string, 
+	"status": string,
+	"deposited_at": string
 }
 ```
-```
-// status enums
-const (
-	Pending = 1
-	Success = 2
-)
 
-// type enums
-const (
-	Deposit  = 1
-	Withdraw = 2
-)
-```
-
-`deposited_at`: unix timestamps in seconds
+`status` is `Pending` or `Success`
+`type` is `Deposit` or `withdraw`
 
 ## Demo
 
