@@ -34,9 +34,12 @@ const params = {
 	currency: "IDR",
 };
 Payment.deposit(params, callbackFunc);
-Current : USD/IDR/VND (default: USD)
-chain_id: 97(testnet)/56(mainnet)
 ```
+Notes:
+- currency : USD/IDR/VND (default: USD)
+- chain_id: 97(testnet)/56(mainnet)
+
+
 #### Handle callback result  
 ```
 callbackFunc(res) {
@@ -71,6 +74,9 @@ Payment.generateQrCode(params).then((res) => {
 });
 
 ```
+Notes:
+- currency : USD/IDR/VND (default: USD)
+- chain_id: 97(testnet)/56(mainnet)
 
 **Next step**: 
 - User use T-Wallet app to scan the QR Code.
