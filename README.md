@@ -18,20 +18,25 @@ $ yarn add t-chain-payment
 ```
 import Payment from "t-chain-payment";
 
-Payment.init(merchant_id);
+Payment.init({ api_key: api-key });
 ```
 
-`merchant_id` will be provided when creating a project or use default merchant id  
+`api_key` is the public key. It will be generated in the cms of t-chain.
 
 
 ## Deposit
 
 ```
-Payment.deposit(amount, order_id, callbackFunc)
+const params = {
+	amount: 1000,
+	notes: "order_id",
+	chain_id: "97",
+	currency: "IDR",
+};
+Payment.deposit(params, callbackFunc);
+Current : USD/IDR/VND (default: USD)
+chain_id: 97(testnet)/56(mainnet)
 ```
-
-`order_id`: unique id of each order. It is called offchain in blockchain terms. 
-
 #### Handle callback result  
 ```
 callbackFunc(res) {
@@ -41,20 +46,31 @@ callbackFunc(res) {
 
 #### Example for deposit
 ```
-Payment.deposit(10, "OrderID123", (res) => {
+const params = {
+	amount: 1000,
+	notes: "order-123-456,
+	chain_id: "97",
+	currency: "IDR",
+};
+Payment.deposit(params, (res) => {
     this.transaction_hash = res.hash;
-})
+});
 ```
 
 ## Generate QR
 ```
-Payment.generateQrCode(amount, orderID).then((res) => {
-  // handle QR Url
-  qrCode = res;
-});
-```
+const params = {
+    amount: 1000,
+    notes: "order-123-456",
+    chainId: "97",
+    currency: "IDR",
+};
 
-`order_id`: unique id of each order. It is called offchain in blockchain terms. 
+Payment.generateQrCode(params).then((res) => {
+    this.qrCode = res;
+});
+
+```
 
 **Next step**: 
 - User use T-Wallet app to scan the QR Code.
@@ -68,31 +84,18 @@ Payment.generateQrCode(amount, orderID).then((res) => {
 	"tnx_hash": string,
 	"deposit_address": string,
 	"deposit_id": string,
-	"merchant_id": string,
-	"order_id": string,
+	"offchain": string,
+	"notes": string,
 	"amount": string,
-	"type": int, 
-	"status": int,
-	"deposited_at": int
+	"type": string, 
+	"status": string,
+	"deposited_at": string
 }
 ```
-```
-// status enums
-const (
-	Pending = 1
-	Success = 2
-)
 
-// type enums
-const (
-	Deposit  = 1
-	Withdraw = 2
-)
-```
-
-`deposited_at`: unix timestamps in seconds
+`status` is `Pending` or `Success`
+`type` is `Deposit` or `withdraw`
 
 ## Demo
 
-[Demo payment with t-chain](https://github.com/tokoinofficial/t-chain-payment-js-example.git)
-
+[Demo payment with t-chain](https://tchain-demo.tokoin.io/)

@@ -2,7 +2,7 @@
     "main": "index.js",
     "name": "t-chain-payment",
     "license": "MIT",
-    "version": "1.1.1",
+    "version": "1.1.7",
     "author": {
         "name": "Toko Chain",
         "email": "son.pham@tokoin.io"
@@ -25,6 +25,7 @@
         "build": "node_modules/webpack/bin/webpack.js --mode production --progress"
     },
     "dependencies": {
+        "axios": "^1.1.3",
         "ethers": "^5.6.9",
         "qrcode": "^1.5.1",
         "uglifyjs-webpack-plugin": "^2.2.0",
