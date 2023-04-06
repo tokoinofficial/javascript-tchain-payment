@@ -4,18 +4,28 @@
 
 ### Use NPM
 
-```
+```shell
 $ npm install t-chain-payment
 ```
 
 ### Use Yarn
-```
+```shell
 $ yarn add t-chain-payment
 ```
 
 ## Initialize
 
+Test mode (running on testnet)
+
+```js
+import Payment from "t-chain-payment";
+
+Payment.init({ api_key: api-key, TEST_MODE: true });
 ```
+
+Production mode (running on mainnet)
+
+```js
 import Payment from "t-chain-payment";
 
 Payment.init({ api_key: api-key });
@@ -30,14 +40,13 @@ Payment.init({ api_key: api-key });
 const params = {
 	amount: 1000,
 	notes: "order_id",
-	chain_id: "97",
 	currency: "IDR",
 };
 Payment.deposit(params, callbackFunc);
 ```
 Notes:
-- currency : USD/IDR/VND (default: USD)
-- chain_id: 97(testnet)/56(mainnet)
+- currency : USD/IDR (default: USD)
+- Support for VND as currency is coming soon
 
 
 #### Handle callback result  
@@ -52,7 +61,6 @@ callbackFunc(res) {
 const params = {
 	amount: 1000,
 	notes: "order-123-456,
-	chain_id: "97",
 	currency: "IDR",
 };
 Payment.deposit(params, (res) => {
@@ -65,7 +73,6 @@ Payment.deposit(params, (res) => {
 const params = {
     amount: 1000,
     notes: "order-123-456",
-    chainId: "97",
     currency: "IDR",
 };
 
@@ -75,8 +82,8 @@ Payment.generateQrCode(params).then((res) => {
 
 ```
 Notes:
-- currency : USD/IDR/VND (default: USD)
-- chain_id: 97(testnet)/56(mainnet)
+- currency : USD/IDR (default: USD)
+- Support for VND as currency is coming soon
 
 **Next step**: 
 - User use T-Wallet app to scan the QR Code.
