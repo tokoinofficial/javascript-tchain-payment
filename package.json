@@ -4,8 +4,8 @@
     "license": "MIT",
     "version": "1.1.9",
     "author": {
-        "name": "Toko Chain",
-        "email": "son.pham@tokoin.io"
+        "name": "tokoinofficial",
+        "email": "hello@tokoin.io"
     },
     "engines": {
         "node": ">=14.16"
