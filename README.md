@@ -15,12 +15,12 @@ $ yarn add t-chain-payment
 
 ## Initialize
 
-Test mode (running on testnet)
+Sandbox mode (running on testnet)
 
 ```js
 import Payment from "t-chain-payment";
 
-Payment.init({ api_key: api-key, TEST_MODE: true });
+Payment.init({ api_key: api-key, mode: 'sandbox' });
 ```
 
 Production mode (running on mainnet)
