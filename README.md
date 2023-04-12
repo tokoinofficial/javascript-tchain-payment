@@ -24,6 +24,7 @@ Payment.init({ api_key: api-key, mode: 'sandbox' });
 ```
 
 Production mode (running on mainnet)
+**WARNING**: production mode is not ready for use in this beta version
 
 ```js
 import Payment from "t-chain-payment";
@@ -36,7 +37,7 @@ Payment.init({ api_key: api-key });
 
 ## Deposit
 
-```
+```js
 const params = {
 	amount: 1000,
 	notes: "order_id",
@@ -50,14 +51,14 @@ Notes:
 
 
 #### Handle callback result  
-```
+```js
 callbackFunc(res) {
     const tnxHash = res.hash;
 }
 ```
 
 #### Example for deposit
-```
+```js
 const params = {
 	amount: 1000,
 	notes: "order-123-456,
@@ -69,7 +70,7 @@ Payment.deposit(params, (res) => {
 ```
 
 ## Generate QR
-```
+```js
 const params = {
     amount: 1000,
     notes: "order-123-456",
