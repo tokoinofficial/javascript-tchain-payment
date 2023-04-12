@@ -1,11 +1,11 @@
 {
     "main": "index.js",
-    "name": "t-chain-payment",
+    "name": "@tokoinofficial/t-chain-payment",
     "license": "MIT",
-    "version": "1.1.9",
+    "version": "2.0.0-beta.0",
     "author": {
-        "name": "Toko Chain",
-        "email": "son.pham@tokoin.io"
+        "name": "tokoinofficial",
+        "email": "hello@tokoin.io"
     },
     "engines": {
         "node": ">=14.16"

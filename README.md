@@ -4,18 +4,29 @@
 
 ### Use NPM
 
-```
-$ npm install t-chain-payment
+```shell
+$ npm install @tokoinofficial/t-chain-payment@2.0.0-beta.0
 ```
 
 ### Use Yarn
-```
-$ yarn add t-chain-payment
+```shell
+$ yarn add @tokoinofficial/t-chain-payment@2.0.0-beta.0
 ```
 
 ## Initialize
 
+Sandbox mode (running on testnet)
+
+```js
+import Payment from "t-chain-payment";
+
+Payment.init({ api_key: api-key, mode: 'sandbox' });
 ```
+
+Production mode (running on mainnet)
+**WARNING**: production mode is not ready for use in this beta version
+
+```js
 import Payment from "t-chain-payment";
 
 Payment.init({ api_key: api-key });
@@ -26,33 +37,31 @@ Payment.init({ api_key: api-key });
 
 ## Deposit
 
-```
+```js
 const params = {
 	amount: 1000,
 	notes: "order_id",
-	chain_id: "97",
 	currency: "IDR",
 };
 Payment.deposit(params, callbackFunc);
 ```
 Notes:
-- currency : USD/IDR/VND (default: USD)
-- chain_id: 97(testnet)/56(mainnet)
+- currency : USD/IDR (default: USD)
+- Support for VND as currency is coming soon
 
 
 #### Handle callback result  
-```
+```js
 callbackFunc(res) {
     const tnxHash = res.hash;
 }
 ```
 
 #### Example for deposit
-```
+```js
 const params = {
 	amount: 1000,
 	notes: "order-123-456,
-	chain_id: "97",
 	currency: "IDR",
 };
 Payment.deposit(params, (res) => {
@@ -61,11 +70,10 @@ Payment.deposit(params, (res) => {
 ```
 
 ## Generate QR
-```
+```js
 const params = {
     amount: 1000,
     notes: "order-123-456",
-    chainId: "97",
     currency: "IDR",
 };
 
@@ -75,8 +83,8 @@ Payment.generateQrCode(params).then((res) => {
 
 ```
 Notes:
-- currency : USD/IDR/VND (default: USD)
-- chain_id: 97(testnet)/56(mainnet)
+- currency : USD/IDR (default: USD)
+- Support for VND as currency is coming soon
 
 **Next step**: 
 - User use T-Wallet app to scan the QR Code.

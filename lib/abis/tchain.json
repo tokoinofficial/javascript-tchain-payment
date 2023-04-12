@@ -192,6 +192,24 @@
     {
         "inputs": [
             {
+                "internalType": "bytes32",
+                "name": "merchantId",
+                "type": "bytes32"
+            },
+            {
+                "internalType": "address",
+                "name": "vault",
+                "type": "address"
+            }
+        ],
+        "name": "addMerchant",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
                 "internalType": "uint256",
                 "name": "",
                 "type": "uint256"
@@ -253,6 +271,11 @@
                     },
                     {
                         "internalType": "bytes32",
+                        "name": "merchantId",
+                        "type": "bytes32"
+                    },
+                    {
+                        "internalType": "bytes32",
                         "name": "offchain",
                         "type": "bytes32"
                     },
@@ -305,6 +328,11 @@
         ],
         "name": "depositIds",
         "outputs": [
+            {
+                "internalType": "bytes32",
+                "name": "merchantId",
+                "type": "bytes32"
+            },
             {
                 "internalType": "address",
                 "name": "user",
@@ -602,6 +630,24 @@
         "type": "function"
     },
     {
+        "inputs": [
+            {
+                "internalType": "uint8",
+                "name": "_packageId",
+                "type": "uint8"
+            },
+            {
+                "internalType": "uint256",
+                "name": "_fee",
+                "type": "uint256"
+            }
+        ],
+        "name": "setPackageDiscount",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
         "inputs": [],
         "name": "setSpec",
         "outputs": [],
@@ -630,19 +676,6 @@
             }
         ],
         "name": "setTokoToken",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "address",
-                "name": "_vault",
-                "type": "address"
-            }
-        ],
-        "name": "setVaultAddress",
         "outputs": [],
         "stateMutability": "nonpayable",
         "type": "function"
@@ -719,8 +752,14 @@
         "type": "function"
     },
     {
-        "inputs": [],
-        "name": "vault",
+        "inputs": [
+            {
+                "internalType": "bytes32",
+                "name": "",
+                "type": "bytes32"
+            }
+        ],
+        "name": "vaults",
         "outputs": [
             {
                 "internalType": "address",
