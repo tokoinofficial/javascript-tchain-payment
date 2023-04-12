@@ -5,12 +5,12 @@
 ### Use NPM
 
 ```shell
-$ npm install t-chain-payment
+$ npm install @tokoinofficial/t-chain-payment@2.0.0-beta.0
 ```
 
 ### Use Yarn
 ```shell
-$ yarn add t-chain-payment
+$ yarn add @tokoinofficial/t-chain-payment@2.0.0-beta.0
 ```
 
 ## Initialize
