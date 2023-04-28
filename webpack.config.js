@@ -1,19 +1,14 @@
 // webpack.config.js
 
-const {resolve} = require('path')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const { resolve } = require('path');
 
 module.exports = {
     entry: resolve(__dirname, 'index.js'),
+    target: 'web',
     mode: 'development',
     output: {
         path: resolve(__dirname, 'dist'),
         filename: 't-chain-payment.js',
-        library: 'Payment'
+        library: 'Payment',
     },
-    plugins: [
-        new UglifyJsPlugin({
-            exclude: [/\.min\.js$/gi] // skip pre-minified libs
-        })
-    ]
-}
+};
