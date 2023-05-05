@@ -24,7 +24,6 @@ Payment.init({ api_key: api-key, mode: 'sandbox' });
 ```
 
 Production mode (running on mainnet)
-**WARNING**: production mode is not ready for use in this beta version
 
 ```js
 import Payment from "@tokoinofficial/t-chain-payment";
