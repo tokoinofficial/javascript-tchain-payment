@@ -2,7 +2,7 @@
     "main": "index.js",
     "name": "@tokoinofficial/t-chain-payment",
     "license": "Apache-2.0",
-    "version": "2.0.2",
+    "version": "2.0.3",
     "author": {
         "name": "tokoinofficial",
         "email": "hello@tokoin.io"
