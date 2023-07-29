@@ -21,12 +21,11 @@
         "T-Chain"
     ],
     "scripts": {
-        "dev": "node_modules/webpack/bin/webpack.js --mode production --watch --progress",
-        "build": "node_modules/webpack/bin/webpack.js --mode production --progress"
+        "dev": "webpack --mode production --watch --progress",
+        "build": "webpack --mode production --progress"
     },
     "dependencies": {
         "axios": "^1.1.3",
-        "ethers": "^5.6.9",
         "qrcode": "^1.5.1"
     },
     "devDependencies": {
@@ -72,6 +71,10 @@
             "indent": [
                 "warn",
                 4
+            ],
+            "quotes": [
+                "error",
+                "single"
             ],
             "no-underscore-dangle": 0,
             "object-curly-newline": [
