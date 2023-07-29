@@ -4,6 +4,7 @@ const { resolve } = require('path');
 
 module.exports = {
     entry: resolve(__dirname, 'index.js'),
+    target: 'web',
     mode: 'development',
     target: 'browserslist',
     output: {
