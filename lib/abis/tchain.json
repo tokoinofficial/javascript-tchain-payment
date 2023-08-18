@@ -125,7 +125,7 @@
             {
                 "indexed": false,
                 "internalType": "bytes32",
-                "name": "depositId",
+                "name": "merchantId",
                 "type": "bytes32"
             },
             {
@@ -142,6 +142,12 @@
             },
             {
                 "indexed": false,
+                "internalType": "uint256",
+                "name": "deductedDiscountAmount",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
                 "internalType": "bytes32",
                 "name": "offchain",
                 "type": "bytes32"
@@ -149,19 +155,6 @@
         ],
         "name": "__deposit",
         "type": "event"
-    },
-    {
-        "inputs": [],
-        "name": "ADMIN_ROLE",
-        "outputs": [
-            {
-                "internalType": "bytes32",
-                "name": "",
-                "type": "bytes32"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
     },
     {
         "inputs": [],
@@ -192,6 +185,29 @@
     {
         "inputs": [
             {
+                "internalType": "address",
+                "name": "discountToken",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "discountFee",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "deductAmount",
+                "type": "uint256"
+            }
+        ],
+        "name": "addDiscountToken",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
                 "internalType": "bytes32",
                 "name": "merchantId",
                 "type": "bytes32"
@@ -210,27 +226,13 @@
     {
         "inputs": [
             {
-                "internalType": "uint256",
-                "name": "",
-                "type": "uint256"
-            }
-        ],
-        "name": "claimIds",
-        "outputs": [
-            {
-                "internalType": "bool",
-                "name": "",
-                "type": "bool"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [
+                "internalType": "address",
+                "name": "depositToken",
+                "type": "address"
+            },
             {
                 "internalType": "address",
-                "name": "token",
+                "name": "discountToken",
                 "type": "address"
             },
             {
@@ -253,16 +255,35 @@
     {
         "inputs": [
             {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "name": "deductDiscountAmountMap",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
                 "components": [
                     {
                         "internalType": "address",
-                        "name": "token",
+                        "name": "depositToken",
                         "type": "address"
                     },
                     {
-                        "internalType": "bool",
-                        "name": "useTOKO",
-                        "type": "bool"
+                        "internalType": "address",
+                        "name": "discountToken",
+                        "type": "address"
                     },
                     {
                         "internalType": "bytes",
@@ -295,7 +316,7 @@
                         "type": "uint256"
                     }
                 ],
-                "internalType": "struct TOKOChainPayment.PaymentDepositRequest",
+                "internalType": "struct TOKOChainPaymentV2.PaymentDepositRequest",
                 "name": "depositData",
                 "type": "tuple"
             }
@@ -321,47 +342,17 @@
     {
         "inputs": [
             {
-                "internalType": "bytes32",
+                "internalType": "address",
                 "name": "",
-                "type": "bytes32"
+                "type": "address"
             }
         ],
-        "name": "depositIds",
+        "name": "discountFeeMap",
         "outputs": [
             {
-                "internalType": "bytes32",
-                "name": "merchantId",
-                "type": "bytes32"
-            },
-            {
-                "internalType": "address",
-                "name": "user",
-                "type": "address"
-            },
-            {
                 "internalType": "uint256",
-                "name": "amount",
+                "name": "",
                 "type": "uint256"
-            },
-            {
-                "internalType": "uint256",
-                "name": "fee",
-                "type": "uint256"
-            },
-            {
-                "internalType": "uint256",
-                "name": "depositTime",
-                "type": "uint256"
-            },
-            {
-                "internalType": "uint256",
-                "name": "deductedTOKO",
-                "type": "uint256"
-            },
-            {
-                "internalType": "bool",
-                "name": "useTOKO",
-                "type": "bool"
             }
         ],
         "stateMutability": "view",
@@ -384,25 +375,25 @@
         "inputs": [
             {
                 "internalType": "address",
-                "name": "token",
+                "name": "depositToken",
                 "type": "address"
             },
             {
-                "internalType": "uint256",
-                "name": "amount",
-                "type": "uint256"
+                "internalType": "address",
+                "name": "discountToken",
+                "type": "address"
             }
         ],
         "name": "getDiscountFee",
         "outputs": [
             {
                 "internalType": "uint256",
-                "name": "discountFee",
+                "name": "",
                 "type": "uint256"
             },
             {
                 "internalType": "uint256",
-                "name": "deductAmount",
+                "name": "",
                 "type": "uint256"
             }
         ],
@@ -475,63 +466,6 @@
         "name": "initialize",
         "outputs": [],
         "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "uint8",
-                "name": "",
-                "type": "uint8"
-            }
-        ],
-        "name": "packageAmount",
-        "outputs": [
-            {
-                "internalType": "uint256",
-                "name": "",
-                "type": "uint256"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "uint8",
-                "name": "",
-                "type": "uint8"
-            }
-        ],
-        "name": "packageDiscount",
-        "outputs": [
-            {
-                "internalType": "uint256",
-                "name": "",
-                "type": "uint256"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "uint8",
-                "name": "",
-                "type": "uint8"
-            }
-        ],
-        "name": "packageTOKO",
-        "outputs": [
-            {
-                "internalType": "uint256",
-                "name": "",
-                "type": "uint256"
-            }
-        ],
-        "stateMutability": "view",
         "type": "function"
     },
     {
@@ -630,24 +564,6 @@
         "type": "function"
     },
     {
-        "inputs": [
-            {
-                "internalType": "uint8",
-                "name": "_packageId",
-                "type": "uint8"
-            },
-            {
-                "internalType": "uint256",
-                "name": "_fee",
-                "type": "uint256"
-            }
-        ],
-        "name": "setPackageDiscount",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
         "inputs": [],
         "name": "setSpec",
         "outputs": [],
@@ -671,29 +587,16 @@
         "inputs": [
             {
                 "internalType": "address",
-                "name": "_tokoToken",
+                "name": "",
                 "type": "address"
             }
         ],
-        "name": "setTokoToken",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "bytes",
-                "name": "",
-                "type": "bytes"
-            }
-        ],
-        "name": "signatures",
+        "name": "supportedDiscountTokenMap",
         "outputs": [
             {
-                "internalType": "bool",
+                "internalType": "uint256",
                 "name": "",
-                "type": "bool"
+                "type": "uint256"
             }
         ],
         "stateMutability": "view",
@@ -724,19 +627,6 @@
         "outputs": [
             {
                 "internalType": "contract TokenRegistry",
-                "name": "",
-                "type": "address"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [],
-        "name": "tokoToken",
-        "outputs": [
-            {
-                "internalType": "address",
                 "name": "",
                 "type": "address"
             }
