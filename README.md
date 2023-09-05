@@ -42,7 +42,7 @@ const params = {
 	notes: "order_id",
 	currency: "IDR",
 };
-Payment.deposit(params, callbackFunc);
+Payment.deposit(params, callbackFunc, receiptCallbackFunc);
 ```
 Notes:
 - currency : USD/IDR (default: USD)
@@ -54,6 +54,8 @@ Notes:
 callbackFunc(res) {
     const tnxHash = res.hash;
 }
+
+receiptCallbackFunc(res) {}
 ```
 
 #### Example for deposit
@@ -65,6 +67,9 @@ const params = {
 };
 Payment.deposit(params, (res) => {
     this.transaction_hash = res.hash;
+},
+(receipt) => {
+    if (receipt.status == 1) {}
 });
 ```
 
